@@ -17,7 +17,7 @@ import EnrollNow from './pages/EnrollNow';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       {/* Automatically scrolls page to top on routing shifts */}
       <ScrollToTop />
       

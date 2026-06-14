@@ -8,10 +8,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   if (!content) return null;
 
   // Pre-process images that might have WordPress URLs, pointing them to our local copy
-  let processedContent = content.replace(
-    /https:\/\/profitandstocks\.com\/wp-content/g,
-    '/wp-content'
-  );
+  let processedContent = content
+    .replace(/https:\/\/profitandstocks\.com\/wp-content/g, 'WP_CONTENT_PLACEHOLDER')
+    .replace(/\/wp-content/g, 'WP_CONTENT_PLACEHOLDER')
+    .replace(/WP_CONTENT_PLACEHOLDER/g, `${import.meta.env.BASE_URL}wp-content`);
 
   // Parse and group blocks line by line to separate headings, lists, images, and paragraphs properly
   const lines = processedContent.split('\n');

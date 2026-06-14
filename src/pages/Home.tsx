@@ -125,7 +125,7 @@ export default function Home() {
           <div className="founder-profile">
             <div className="founder-img">
               <img 
-                src="/wp-content/uploads/2025/03/cropped-image-businessman-sitting-by-table-cafe-analyzing-indicators-laptop-computer_171337-5598.jpg" 
+                src={`${import.meta.env.BASE_URL}wp-content/uploads/2025/03/cropped-image-businessman-sitting-by-table-cafe-analyzing-indicators-laptop-computer_171337-5598.jpg`} 
                 alt="SEBI/NISM Certified Research Analyst Mr. S. Kumar analyzing market charts"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=600";
@@ -200,10 +200,10 @@ export default function Home() {
               const feeText = feeMatch ? `₹ ${feeMatch[1]}` : "Custom Pricing";
 
               // Find cover image or default to stock illustration
-              let coverImg = "/wp-content/uploads/2025/03/Investment-data-amico.png";
-              if (course.slug.includes('basic')) coverImg = "/wp-content/uploads/elementor/thumbs/Financial-Market-Basic-Course-r4cbxtm4wotpb68u6p060ghzpe5erzcvd15b65vkm6.jpg";
-              else if (course.slug.includes('mentorship')) coverImg = "/wp-content/uploads/elementor/thumbs/Mentorship-Service-whom-r4cedmpdcj04s6c9gilz2ljj9k40hxjkvxxptm5u0e.jpg";
-              else if (course.slug.includes('nism')) coverImg = "/wp-content/uploads/elementor/thumbs/NISM-Certification-Program-whom-r4ceb887vrprbf0488m7zh4ff1qhjfq6psdfahl7aw.jpg";
+              let coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/Investment-data-amico.png`;
+              if (course.slug.includes('basic')) coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Financial-Market-Basic-Course-r4cbxtm4wotpb68u6p060ghzpe5erzcvd15b65vkm6.jpg`;
+              else if (course.slug.includes('mentorship')) coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Mentorship-Service-whom-r4cedmpdcj04s6c9gilz2ljj9k40hxjkvxxptm5u0e.jpg`;
+              else if (course.slug.includes('nism')) coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/NISM-Certification-Program-whom-r4ceb887vrprbf0488m7zh4ff1qhjfq6psdfahl7aw.jpg`;
 
               // Create short description from content
               const desc = course.content.split('\n')[2] || "Learn structured trading strategies...";
