@@ -3,6 +3,27 @@ import { Calendar, User, ArrowLeft } from 'lucide-react';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import blogsData from '../data/blogs.json';
 
+// Helper to strip WordPress comments/sidebar junk from content
+const cleanBlogContent = (content: string) => {
+  if (!content) return '';
+  const markers = [
+    '### Leave a Reply',
+    'Leave a Reply',
+    'Post Tags :',
+    'SearchSearch',
+    '###  Recent Post',
+    'Prev Post'
+  ];
+  let cutIndex = content.length;
+  for (const marker of markers) {
+    const idx = content.indexOf(marker);
+    if (idx !== -1 && idx < cutIndex) {
+      cutIndex = idx;
+    }
+  }
+  return content.substring(0, cutIndex).trim();
+};
+
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = blogsData.find(b => b.slug === slug);
@@ -67,7 +88,7 @@ export default function BlogPost() {
             </div>
 
             {/* Markdown rendered body */}
-            <MarkdownRenderer content={post.content} />
+            <MarkdownRenderer content={cleanBlogContent(post.content)} />
             
           </article>
         </div>

@@ -1062,6 +1062,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .grid-3, .course-grid, .blog-grid, .maps-grid {
     grid-template-columns: 1fr;
   }
+  .blog-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .blog-header .tabs-header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .header-top {
     display: none;
   }

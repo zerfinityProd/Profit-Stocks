@@ -3,6 +3,27 @@ import { Link } from 'react-router-dom';
 import { Search, Calendar, ArrowRight } from 'lucide-react';
 import blogsData from '../data/blogs.json';
 
+// Helper to strip WordPress comments/sidebar junk from content
+const cleanBlogContent = (content: string) => {
+  if (!content) return '';
+  const markers = [
+    '### Leave a Reply',
+    'Leave a Reply',
+    'Post Tags :',
+    'SearchSearch',
+    '###  Recent Post',
+    'Prev Post'
+  ];
+  let cutIndex = content.length;
+  for (const marker of markers) {
+    const idx = content.indexOf(marker);
+    if (idx !== -1 && idx < cutIndex) {
+      cutIndex = idx;
+    }
+  }
+  return content.substring(0, cutIndex).trim();
+};
+
 // Helper to determine category based on slug/title content
 const getBlogCategory = (slug: string, title: string) => {
   const t = (slug + ' ' + title).toLowerCase();
@@ -21,8 +42,9 @@ export default function Blogs() {
   const filteredBlogs = blogsData.filter(blog => {
     const category = getBlogCategory(blog.slug, blog.title);
     const matchesCategory = activeCategory === 'All' || category === activeCategory;
+    const cleanedContent = cleanBlogContent(blog.content);
     const matchesSearch = blog.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          blog.content.substring(0, 1000).toLowerCase().includes(searchQuery.toLowerCase());
+                          cleanedContent.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -75,7 +97,7 @@ export default function Blogs() {
               <Search 
                 size={18} 
                 color="var(--text-muted)" 
-                style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
+                style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} 
               />
             </div>
           </div>
