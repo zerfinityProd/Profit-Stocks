@@ -49,6 +49,7 @@ export default function Header() {
         <div className="container navbar">
           <Link to="/" className="logo" onClick={closeMenu} aria-label="Profit and Stocks Home">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Profit & Stocks Logo" />
+            <span className="logo-text">Profit and Stocks</span>
           </Link>
 
           {/* Hamburger Menu Icon (Mobile) */}
@@ -114,8 +115,8 @@ export default function Header() {
                     </Link>
                   </li>
                   <li className="dropdown-item">
-                    <Link to="/courses/trade-with-me" onClick={closeMenu}>
-                      Complete Trader Transformation (Trade With Me)
+                    <Link to="/courses/market-basic-course" onClick={closeMenu}>
+                      Basic Finance for Youngs and teens
                     </Link>
                   </li>
                   <li className="dropdown-item">

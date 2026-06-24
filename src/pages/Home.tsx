@@ -95,24 +95,24 @@ export default function Home() {
           <div className="grid-3">
             <div className="card">
               <div className="card-icon" aria-hidden="true">
+                <ShieldCheck />
+              </div>
+              <h3>SEBI Certified Mentors</h3>
+              <p>Gain knowledge backed by SEBI/NISM Certified Research Analyst Mr. S. Kumar, with zero reliance on external tips.</p>
+            </div>
+            <div className="card">
+              <div className="card-icon" aria-hidden="true">
                 <Users />
               </div>
-              <h3>Mentorship</h3>
+              <h3>Practice Based Training</h3>
               <p>Understanding and correcting your market approach through gap-filling techniques and review of trading records.</p>
             </div>
             <div className="card">
               <div className="card-icon" aria-hidden="true">
                 <HeartHandshake />
               </div>
-              <h3>Hand-Holding Support</h3>
+              <h3>Doubts Clearing</h3>
               <p>Direct query clearing and continuous review of your trade executions post-training to build real confidence.</p>
-            </div>
-            <div className="card">
-              <div className="card-icon" aria-hidden="true">
-                <ShieldCheck />
-              </div>
-              <h3>SEBI Certified Guidance</h3>
-              <p>Gain knowledge backed by SEBI/NISM Certified Research Analyst Mr. S. Kumar, with zero reliance on external tips.</p>
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function Home() {
             </div>
             <div className="founder-info">
               <h2>Mr. S. Kumar</h2>
-              <div className="founder-tag">SEBI &amp; NISM Certified Research Analyst</div>
+              <div className="founder-tag">(SEBI/NISM Certified Research Analyst)</div>
               <p>
                 <strong>Profit and Stocks</strong> is an exceptional team of market traders with over 12+ years of combined trading experience. Profitandstocks.com is a full-service trading training, education, and mentoring company managed by Mr. S. Kumar, a passionately curious and independent trader in the financial markets for the last decade.
               </p>
@@ -199,11 +199,25 @@ export default function Home() {
                                course.content.match(/(?:payment term|fee is)\s*(\d+\/?-?)/i);
               const feeText = feeMatch ? `₹ ${feeMatch[1]}` : "Custom Pricing";
 
-              // Find cover image or default to stock illustration
+              // Find cover image dynamically based on slug
               let coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/Investment-data-amico.png`;
-              if (course.slug.includes('basic')) coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Financial-Market-Basic-Course-r4cbxtm4wotpb68u6p060ghzpe5erzcvd15b65vkm6.jpg`;
-              else if (course.slug.includes('mentorship')) coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Mentorship-Service-whom-r4cedmpdcj04s6c9gilz2ljj9k40hxjkvxxptm5u0e.jpg`;
-              else if (course.slug.includes('nism')) coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/NISM-Certification-Program-whom-r4ceb887vrprbf0488m7zh4ff1qhjfq6psdfahl7aw.jpg`;
+              if (course.slug === 'financial-market-basic-course') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Financial-Market-Basic-Course-r4cbxtm4wotpb68u6p060ghzpe5erzcvd15b65vkm6.jpg`;
+              } else if (course.slug === 'market-basic-course') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Financial-or-stock-market-study.png`;
+              } else if (course.slug === 'pro-trader-course-from-confusion-to-clarity') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/cropped-image-businessman-sitting-by-table-cafe-analyzing-indicators-laptop-computer_171337-5598.jpg`;
+              } else if (course.slug === 'pro-trader-course-option-specific') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/person-office-analyzing-checking-finance-graphs_23-2150377129.jpg`;
+              } else if (course.slug === 'comprehensive-course') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Bullish-Trend-Impulses-vs-Corrections-1024x390-1.png`;
+              } else if (course.slug === 'mentorship') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Mentorship-Service-whom-r4cedmpdcj04s6c9gilz2ljj9k40hxjkvxxptm5u0e.jpg`;
+              } else if (course.slug === 'nism-certification-program') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/NISM-Certification-Program-whom-r4ceb887vrprbf0488m7zh4ff1qhjfq6psdfahl7aw.jpg`;
+              } else if (course.slug === 'advisory-services') {
+                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/man-trading-browsing-online-stock-investments-night_169016-47425.jpg`;
+              }
 
               // Create short description from content
               const desc = course.content.split('\n')[2] || "Learn structured trading strategies...";
@@ -273,9 +287,17 @@ export default function Home() {
           <h2 className="section-title">What Our Customers Say</h2>
           
           <div className="reviews-container" style={{ marginTop: '48px' }}>
-            <div className="review-card fade-in" key={reviewIdx}>
-              <p className="review-text">“{TESTIMONIALS[reviewIdx].text}”</p>
-              <div className="review-author">— {TESTIMONIALS[reviewIdx].name}</div>
+            <div className="reviews-grid">
+              {[0, 1, 2].map((offset) => {
+                const idx = (reviewIdx + offset) % TESTIMONIALS.length;
+                const item = TESTIMONIALS[idx];
+                return (
+                  <div className="review-card fade-in" key={idx}>
+                    <p className="review-text">“{item.text}”</p>
+                    <div className="review-author">— {item.name}</div>
+                  </div>
+                );
+              })}
             </div>
             
             <div className="reviews-nav">

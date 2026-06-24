@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -63,7 +63,17 @@ export default function Footer() {
 
           {/* Copyright bar */}
           <div className="footer-bottom">
-            <p>Copyright © 2025 Profit and Stocks.. All Rights Reserved</p>
+            <p>
+              Copyright © 2025 Profit and Stocks.. All Rights Reserved | Made With{' '}
+              <Heart 
+                size={14} 
+                fill="#ef4444" 
+                color="#ef4444" 
+                style={{ display: 'inline-block', verticalAlign: '-1px', margin: '0 4px' }} 
+                aria-hidden="true" 
+              />{' '}
+              by Zerfinity
+            </p>
           </div>
         </div>
       </div>
