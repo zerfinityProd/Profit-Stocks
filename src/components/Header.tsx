@@ -48,7 +48,7 @@ export default function Header() {
       <header className="main-header">
         <div className="container navbar">
           <Link to="/" className="logo" onClick={closeMenu} aria-label="Profit and Stocks Home">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Profit & Stocks Logo" />
+            <img src={`${import.meta.env.BASE_URL}logo.png?v=2`} alt="Profit & Stocks Logo" />
             <span className="logo-text">Profit and Stocks</span>
           </Link>
 
