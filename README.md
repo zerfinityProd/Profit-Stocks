@@ -8,7 +8,7 @@ Here is a collection of status badges for the project:
 ![GitHub issues](https://img.shields.io/github/issues/zerfinityProd/Profit-Stocks)
 ![GitHub stars](https://img.shields.io/github/stars/zerfinityProd/Profit-Stocks)
 [![Security Status](https://img.shields.io/badge/security-monitored-brightgreen)](https://github.com/zerfinityProd/Profit-Stocks/security)
-![GitHub license](https://img.shields.io/github/license/zerfinityProd/Profit-Stocks)
+![GitHub license](https://img.shields.io/badge/license-MIT-blue)
 
 ---
 
