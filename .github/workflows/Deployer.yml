@@ -1,4 +1,4 @@
-name: Deployer
+name: Deployer # v2
 
 on:
   push:
