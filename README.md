@@ -2,7 +2,7 @@
 
 📈 **Inspiring The Traders – Giving Direction**
 
-Here is a collection of status badges for the project:
+### Live Status
 
 [![Deployer](https://github.com/zerfinityProd/Profit-Stocks/actions/workflows/Deployer.yml/badge.svg)](https://github.com/zerfinityProd/Profit-Stocks/actions/workflows/Deployer.yml)
 ![GitHub issues](https://img.shields.io/github/issues/zerfinityProd/Profit-Stocks)
