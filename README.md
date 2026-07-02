@@ -7,7 +7,7 @@ Here is a collection of status badges for the project:
 [![Deployer](https://github.com/zerfinityProd/Profit-Stocks/actions/workflows/Deployer.yml/badge.svg)](https://github.com/zerfinityProd/Profit-Stocks/actions/workflows/Deployer.yml)
 ![GitHub issues](https://img.shields.io/github/issues/zerfinityProd/Profit-Stocks)
 ![GitHub stars](https://img.shields.io/github/stars/zerfinityProd/Profit-Stocks)
-![GitHub security advisories](https://img.shields.io/github/advisories/zerfinityProd/Profit-Stocks)
+[![Security Status](https://img.shields.io/badge/security-monitored-brightgreen)](https://github.com/zerfinityProd/Profit-Stocks/security)
 ![GitHub license](https://img.shields.io/github/license/zerfinityProd/Profit-Stocks)
 
 ---
