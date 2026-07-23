@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
 
+import TickerTape from './TickerTape';
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -28,6 +30,9 @@ export default function Header() {
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       
+      {/* Live Market Ticker Tape */}
+      <TickerTape />
+
       {/* Top Utility Bar */}
       <div className="header-top">
         <div className="container">

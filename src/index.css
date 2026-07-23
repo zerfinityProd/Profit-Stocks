@@ -1205,3 +1205,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     gap: 36px;
   }
 }
+
+/* Slim & Sleek Light Ticker Tape Styles */
+.ticker-tape-wrapper {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #eaefe9 !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.ticker-tape-wrapper .tradingview-widget-container,
+.ticker-tape-wrapper .tradingview-widget-container__widget,
+.ticker-tape-wrapper iframe {
+  height: 36px !important;
+  max-height: 36px !important;
+}
+
