@@ -203,8 +203,11 @@ export default function Home() {
               // Find cover image dynamically based on slug using attached assets
               const coverImg = getCourseImage(course.slug);
 
-              // Create short description from content
-              const desc = course.content.split('\n')[2] || "Learn structured trading strategies...";
+              // Create short description from content (excluding subheadings like # Heading)
+              const desc = course.content
+                .split('\n')
+                .map(line => line.trim())
+                .find(line => line.length > 0 && !line.startsWith('#')) || "Learn structured trading strategies...";
 
               return (
                 <article className="course-card fade-in" key={course.slug}>
