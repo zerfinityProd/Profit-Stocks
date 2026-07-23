@@ -136,6 +136,11 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         const trimmed = block.trim();
         if (!trimmed) return null;
 
+        // Horizontal rules
+        if (trimmed === '---' || trimmed === '***' || trimmed === '___') {
+          return <hr key={index} style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '36px 0', opacity: 0.6 }} />;
+        }
+
         // Headers
         if (trimmed.startsWith('# ')) {
           return <h1 key={index} className="fade-in">{renderInlineStyles(trimmed.substring(2))}</h1>;
