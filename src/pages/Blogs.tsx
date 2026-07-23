@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Calendar, ArrowRight } from 'lucide-react';
 import blogsData from '../data/blogs.json';
+import { getBlogImage } from '../utils/blogImages';
 
 // Helper to strip WordPress comments/sidebar junk from content
 const cleanBlogContent = (content: string) => {
@@ -53,7 +54,7 @@ export default function Blogs() {
       {/* Breadcrumb Page Header */}
       <section className="page-hero" aria-label="Blogs Breadcrumbs">
         <div className="container">
-          <h1>Educational Blogs</h1>
+          <h1>Blogs</h1>
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link to="/">Home</Link>
             <span>&raquo;</span>
@@ -112,25 +113,8 @@ export default function Blogs() {
                 const paragraphs = blog.content.split('\n').filter(p => p.trim() && !p.startsWith('#'));
                 const excerpt = paragraphs[0] || "Read details about trading strategy and market psychology...";
 
-                // Select specific image based on slug, fallback to category
-                let coverImg = '';
-                if (blog.slug === 'buy-and-sell-traps') {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/BUY-SELL-Traps.png`;
-                } else if (blog.slug === 'less-is-more-in-trading') {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Less-is-more-in-Trading.png`;
-                } else if (blog.slug === 'how-to-become-profitable-from-heavy-losses-in-stock-market') {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Profitable-from-heavy-losses-in-Stock-Market.png`;
-                } else if (blog.slug === 'how-do-you-make-a-financial-or-stock-market-study-interesting-and-effective') {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Financial-or-stock-market-study.png`;
-                } else if (blog.slug === 'stock-market-and-psychology') {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Stock-market-and-psychology.png`;
-                } else if (blog.slug === 'difference-between-investing-and-trading') {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Investment-data-pana.svg`;
-                } else {
-                  coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/Site-Stats-amico.png`;
-                  if (category === 'Investing') coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/Investment-data-amico.png`;
-                  else if (category === 'Psychology') coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/Financial-data-amico.png`;
-                }
+                // Select specific unique image for this blog post
+                const coverImg = getBlogImage(blog.slug);
 
                 return (
                   <article className="blog-card fade-in" key={blog.slug}>

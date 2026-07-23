@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import blogsData from '../data/blogs.json';
+import { getBlogImage } from '../utils/blogImages';
 
 // Helper to strip WordPress comments/sidebar junk from content
 const cleanBlogContent = (content: string) => {
@@ -83,8 +84,17 @@ export default function BlogPost() {
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <User size={14} />
-                <span>By Mr. S. Kumar</span>
+                <span>By <strong>Mr. S. Kumar</strong></span>
               </span>
+            </div>
+
+            {/* Featured Article Banner Image */}
+            <div style={{ marginBottom: '32px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', maxHeight: '420px' }}>
+              <img 
+                src={getBlogImage(post.slug)} 
+                alt={post.title}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
 
             {/* Markdown rendered body */}
