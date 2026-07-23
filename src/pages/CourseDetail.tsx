@@ -3,6 +3,7 @@ import { Calendar, Clock, CreditCard, AlertCircle, ArrowRight } from 'lucide-rea
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import Accordion from '../components/Accordion';
 import coursesData from '../data/courses.json';
+import { getCourseImage } from '../utils/courseImages';
 
 export default function CourseDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -84,6 +85,15 @@ export default function CourseDetail() {
             
             {/* Left Content Column */}
             <div>
+              {/* Course Banner Image */}
+              <div style={{ marginBottom: '24px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', maxHeight: '360px', boxShadow: 'var(--shadow-md)' }}>
+                <img 
+                  src={getCourseImage(course.slug)} 
+                  alt={course.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
+
               {/* Metadata Cards */}
               <div className="course-meta-cards" aria-label="Course quick details">
                 <div className="course-meta-card">

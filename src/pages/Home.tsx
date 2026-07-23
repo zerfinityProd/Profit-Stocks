@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Award, BookOpen, TrendingUp, Users, ArrowRight, ShieldCheck, HeartHandshake } from 'lucide-react';
 import coursesData from '../data/courses.json';
+import { getCourseImage } from '../utils/courseImages';
 
 const MOTTO_TITLES = [
   "Giving direction Inspiring the trader",
@@ -199,25 +200,8 @@ export default function Home() {
                                course.content.match(/(?:payment term|fee is)\s*(\d+\/?-?)/i);
               const feeText = feeMatch ? `₹ ${feeMatch[1]}` : "Custom Pricing";
 
-              // Find cover image dynamically based on slug
-              let coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/Investment-data-amico.png`;
-              if (course.slug === 'financial-market-basic-course') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Financial-Market-Basic-Course-r4cbxtm4wotpb68u6p060ghzpe5erzcvd15b65vkm6.jpg`;
-              } else if (course.slug === 'market-basic-course') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Financial-or-stock-market-study.png`;
-              } else if (course.slug === 'pro-trader-course-from-confusion-to-clarity') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/cropped-image-businessman-sitting-by-table-cafe-analyzing-indicators-laptop-computer_171337-5598.jpg`;
-              } else if (course.slug === 'pro-trader-course-option-specific') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/03/person-office-analyzing-checking-finance-graphs_23-2150377129.jpg`;
-              } else if (course.slug === 'comprehensive-course') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/Bullish-Trend-Impulses-vs-Corrections-1024x390-1.png`;
-              } else if (course.slug === 'mentorship') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/Mentorship-Service-whom-r4cedmpdcj04s6c9gilz2ljj9k40hxjkvxxptm5u0e.jpg`;
-              } else if (course.slug === 'nism-certification-program') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/elementor/thumbs/NISM-Certification-Program-whom-r4ceb887vrprbf0488m7zh4ff1qhjfq6psdfahl7aw.jpg`;
-              } else if (course.slug === 'advisory-services') {
-                coverImg = `${import.meta.env.BASE_URL}wp-content/uploads/2025/04/man-trading-browsing-online-stock-investments-night_169016-47425.jpg`;
-              }
+              // Find cover image dynamically based on slug using attached assets
+              const coverImg = getCourseImage(course.slug);
 
               // Create short description from content
               const desc = course.content.split('\n')[2] || "Learn structured trading strategies...";
