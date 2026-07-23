@@ -352,6 +352,36 @@
             <td>Navigation links rendered at 17px.</td>
             <td>Scaled up nav links to 20px in index.css to increase visibility and hierarchy.</td>
           </tr>
+          <tr>
+            <td><span class="badge badge-style">Styling</span></td>
+            <td><strong>Market Ticker Theme</strong></td>
+            <td>Dark theme ticker with 44px container height.</td>
+            <td>Revamped to light colorTheme with white (#ffffff) background and a 36px slim & sleek profile.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-code">Code</span></td>
+            <td><strong>Ticker Symbol Feeds</strong></td>
+            <td>Unrecognized NSE symbol tags showing red warning icons.</td>
+            <td>Fixed to valid BSE & Forex identifiers (BSE:SENSEX, BSE:RELIANCE, BSE:TCS, etc.) with real-time data.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-layout">Layout</span></td>
+            <td><strong>Stock Ordering</strong></td>
+            <td>Unsorted list of ticker symbols.</td>
+            <td>Arranged top Indian stocks in strict alphabetical order (ADANI ENT, ASIAN PAINTS, AXIS BANK ... WIPRO).</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-code">Code</span></td>
+            <td><strong>Ticker Data Architecture</strong></td>
+            <td>Hardcoded symbols array embedded directly in component script.</td>
+            <td>Created modular src/config/tickerStocks.json with Top 50 Indian stocks and customSymbols prop support.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-code">Code</span></td>
+            <td><strong>Automated Deployment</strong></td>
+            <td>Manual static hosting updates.</td>
+            <td>Automated GitHub Pages CI/CD pipeline via .github/workflows/Deployer.yml on push to main.</td>
+          </tr>
 
         </tbody>
       </table>
@@ -366,6 +396,9 @@
       
       <h3 style="margin-top: 16px; font-size: 16px; color: var(--secondary);">Semantic CSS Underline Styling</h3>
       <p>Rather than using fixed inline divider boxes which look detached on fluid viewport sizes, we refactored headings to wrap exactly to content length (`width: fit-content;`). The pseudo-element border is then mapped to `width: 100%`, aligning the blue line directly underneath the final characters of each footer title.</p>
+
+      <h3 style="margin-top: 16px; font-size: 16px; color: var(--secondary);">Configurable Market Ticker Architecture (JSON & React)</h3>
+      <p>The market ticker component was decoupled from inline hardcoded arrays into a dedicated external configuration asset at `src/config/tickerStocks.json`. The ticker tape loads the top 50 Indian bluechip stocks (sorted alphabetically from ADANI ENT to WIPRO) and key indices. The React component (`TickerTape.tsx`) dynamically parses this configuration while offering an optional `customSymbols` prop for runtime overrides.</p>
     </section>
 
     <!-- Section 4: Compilation & Deployment Status -->
