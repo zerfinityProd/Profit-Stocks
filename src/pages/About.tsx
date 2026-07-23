@@ -25,21 +25,6 @@ export default function About() {
         <div className="container">
           <div style={{ maxWidth: '920px', margin: '0 auto' }}>
             
-            {/* Top Banner Image */}
-            <div style={{ 
-              marginBottom: '40px', 
-              borderRadius: 'var(--radius-lg)', 
-              overflow: 'hidden', 
-              boxShadow: 'var(--shadow-md)',
-              maxHeight: '360px'
-            }}>
-              <img 
-                src={`${import.meta.env.BASE_URL}images/course-comprehensive.jpg`} 
-                alt="Profit and Stocks Financial Market Expertise" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-            </div>
-
             {/* Structured Highlights */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', marginBottom: '40px' }}>
               <div className="feature-card" style={{ padding: '24px', background: 'var(--bg-alt)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
