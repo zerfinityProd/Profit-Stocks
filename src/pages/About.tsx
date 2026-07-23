@@ -25,23 +25,20 @@ export default function About() {
         <div className="container">
           <div style={{ maxWidth: '920px', margin: '0 auto' }}>
             
-            {/* Custom 2D Line Art Illustration */}
+            {/* Custom High Resolution 2D Line Art Illustration */}
             <div style={{ 
               marginBottom: '40px', 
               borderRadius: 'var(--radius-lg)', 
               overflow: 'hidden', 
               boxShadow: 'var(--shadow-md)',
               border: '1px solid var(--border)',
-              background: '#fff',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '20px'
+              width: '100%',
+              lineHeight: 0
             }}>
               <img 
                 src={`${import.meta.env.BASE_URL}images/about-hero-line-art.png`} 
                 alt="Stock Market Trading & Investment Growth 2D Line Art Illustration" 
-                style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain', display: 'block', borderRadius: 'var(--radius-md)' }}
+                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
               />
             </div>
 
