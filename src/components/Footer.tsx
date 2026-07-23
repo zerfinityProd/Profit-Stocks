@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="footer-col">
               <h3>Profit and Stocks</h3>
               <p style={{ marginTop: '16px', lineHeight: '1.7', fontSize: '15px' }}>
-                Profit and Stocks, powered by a team of SEBI/NISM Certified Analysts, 
+                Profit and Stocks, led by SEBI/NISM Certified Analyst <strong>Mr. S. Kumar</strong>, 
                 is an exceptional team of market traders with 12+ years of combined expertise, 
                 dedicated to providing the right approach, training, and guidance to struggling 
                 traders and investors.

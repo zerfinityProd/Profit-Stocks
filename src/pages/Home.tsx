@@ -98,7 +98,7 @@ export default function Home() {
                 <ShieldCheck />
               </div>
               <h3>SEBI Certified Mentors</h3>
-              <p>Gain knowledge backed by SEBI/NISM Certified Research Analyst Mr. S. Kumar, with zero reliance on external tips.</p>
+              <p>Gain knowledge backed by SEBI/NISM Certified Research Analyst <strong>Mr. S. Kumar</strong>, with zero reliance on external tips.</p>
             </div>
             <div className="card">
               <div className="card-icon" aria-hidden="true">
@@ -136,7 +136,7 @@ export default function Home() {
               <h2>Profit and Stocks</h2>
               <div className="founder-tag">(SEBI/NISM Certified Research Analyst)</div>
               <p>
-                <strong>Profit and Stocks</strong> is an exceptional team of market traders with over 12+ years of combined trading experience. Profitandstocks.com is a full-service trading training, education, and mentoring company managed by Mr. S. Kumar, a passionately curious and independent trader in the financial markets for the last decade.
+                <strong>Profit and Stocks</strong> is an exceptional team of market traders with over 12+ years of combined trading experience. Profitandstocks.com is a full-service trading training, education, and mentoring company managed by <strong>Mr. S. Kumar</strong>, a passionately curious and independent trader in the financial markets for the last decade.
               </p>
               <p>
                 Our broad and global mission is to provide the right approach, training, and guidance to struggling traders and investors so they can learn, practice, and succeed independently without relying on tips or advisory services.
@@ -261,7 +261,7 @@ export default function Home() {
                 <Award />
               </div>
               <h3>Expert-Led Training</h3>
-              <p>Learn from SEBI/NISM Certified Research Analyst Mr. S. Kumar, utilizing proven trading strategies for consistent success.</p>
+              <p>Learn from SEBI/NISM Certified Research Analyst <strong>Mr. S. Kumar</strong>, utilizing proven trading strategies for consistent success.</p>
             </div>
             <div className="card">
               <div className="card-icon" style={{ backgroundColor: 'rgba(35, 72, 146, 0.1)', color: 'var(--secondary)' }} aria-hidden="true">
