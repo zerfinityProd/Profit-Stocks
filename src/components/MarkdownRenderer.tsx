@@ -78,45 +78,53 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
     blocks.push(currentBlock.join('\n'));
   }
 
-  const renderInlineStyles = (text: string) => {
-    // Basic inline markdown: links [label](url), bold **text**, italics *text*
-    // First, process links: [label](url)
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const renderInlineStyles = (text: string): React.ReactNode => {
+    if (!text) return text;
+
+    // Process markdown tokens: bold **text** and links [label](url)
+    const tokenRegex = /(\*\*.*?\*\*|\[.*?\]\(.*?\))/g;
     const parts: React.ReactNode[] = [];
-    let lastIndex = 0;
-    let match;
+    let lastIdx = 0;
+    let match: RegExpExecArray | null;
 
-    while ((match = linkRegex.exec(text)) !== null) {
-      const [fullMatch, label, url] = match;
-      const index = match.index;
-
-      if (index > lastIndex) {
-        parts.push(text.substring(lastIndex, index));
+    while ((match = tokenRegex.exec(text)) !== null) {
+      if (match.index > lastIdx) {
+        parts.push(text.substring(lastIdx, match.index));
       }
 
-      // Check if it's an internal link or external link
-      const isInternal = url.startsWith('/') || url.includes('localhost') || url.includes('profitandstocks.com');
-      const cleanUrl = url.replace('https://profitandstocks.com', '');
-
-      if (isInternal) {
-        parts.push(
-          <a key={index} href={cleanUrl}>
-            {label}
-          </a>
-        );
-      } else {
-        parts.push(
-          <a key={index} href={url} target="_blank" rel="noopener noreferrer">
-            {label}
-          </a>
-        );
+      const matchStr = match[0];
+      if (matchStr.startsWith('**') && matchStr.endsWith('**')) {
+        const boldText = matchStr.slice(2, -2);
+        parts.push(<strong key={match.index}>{boldText}</strong>);
+      } else if (matchStr.startsWith('[')) {
+        const linkMatch = matchStr.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+          const [, label, url] = linkMatch;
+          const isInternal = url.startsWith('/') || url.includes('localhost') || url.includes('profitandstocks.com');
+          const cleanUrl = url.replace('https://profitandstocks.com', '');
+          if (isInternal) {
+            parts.push(
+              <a key={match.index} href={cleanUrl}>
+                {label}
+              </a>
+            );
+          } else {
+            parts.push(
+              <a key={match.index} href={url} target="_blank" rel="noopener noreferrer">
+                {label}
+              </a>
+            );
+          }
+        } else {
+          parts.push(matchStr);
+        }
       }
 
-      lastIndex = index + fullMatch.length;
+      lastIdx = match.index + matchStr.length;
     }
 
-    if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
+    if (lastIdx < text.length) {
+      parts.push(text.substring(lastIdx));
     }
 
     return parts.length > 0 ? parts : text;
