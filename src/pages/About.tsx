@@ -33,17 +33,13 @@ export default function About() {
               boxShadow: 'var(--shadow-md)',
               border: '1px solid var(--border)',
               width: '100%',
-              maxHeight: '220px',
-              background: '#fff',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '12px'
+              height: '200px',
+              background: '#fff'
             }}>
               <img 
                 src={`${import.meta.env.BASE_URL}images/about-hero-line-art.png`} 
                 alt="Stock Market Trading & Investment Growth 2D Line Art Illustration" 
-                style={{ width: '100%', maxHeight: '196px', display: 'block', objectFit: 'contain', objectPosition: 'center' }}
+                style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
 
