@@ -3,7 +3,6 @@ import { Calendar, Clock, CreditCard, AlertCircle, ArrowRight } from 'lucide-rea
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import Accordion from '../components/Accordion';
 import coursesData from '../data/courses.json';
-import { getCourseImage } from '../utils/courseImages';
 
 export default function CourseDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -37,17 +36,12 @@ export default function CourseDetail() {
   const paymentTerm = extractMeta("Payment Term", "Non-Negotiable");
 
   // Extract price
-  const priceMatch = course.content.match(/(?:fee|program fee is)\s+₹\s*([0-9,/-]+)/i) || 
-                     course.content.match(/INR\s*([0-9,\s*-]+)/i);
-  const price = priceMatch ? `₹ ${priceMatch[1]}` : "Contact for Fee";
+  const price = (course as any).price || "Contact for Fee";
 
-  // Clean up content to remove inline fee sentences, Register Now links, and metadata section from showing twice
-  let cleanContent = course.content
-    .replace(/(?:The program fee is|Per month fee is)\s+₹\s*[\d,/ -]+(?:\s*per\s+(?:hour|month|course))?/gi, '')
-    .replace(/\[Register Now\]\([^)]+\)/gi, '')
-    .replace(/What we Offer/gi, '')
-    .replace(/## Key Details of[\s\S]*?(?=For Whom|$)/i, '')
-    .trim();
+  // Clean up content to remove metadata section from showing twice
+  let cleanContent = course.content;
+  // Let's strip the redundant headers if we render them in custom elements
+  cleanContent = cleanContent.replace(/## Key Details of[\s\S]*?(?=For Whom|$)/i, '');
 
   // Split "For Whom", "Benefits", "Why" if possible, or render them under accordions
   const extractSection = (headerName: string) => {
@@ -85,18 +79,9 @@ export default function CourseDetail() {
       <section className="page-content" aria-label="Course syllabus and pricing options">
         <div className="container">
           <div className="course-detail-layout">
-            
+
             {/* Left Content Column */}
             <div>
-              {/* Course Banner Image */}
-              <div style={{ marginBottom: '24px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', maxHeight: '360px', boxShadow: 'var(--shadow-md)' }}>
-                <img 
-                  src={getCourseImage(course.slug)} 
-                  alt={course.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
-              </div>
-
               {/* Metadata Cards */}
               <div className="course-meta-cards" aria-label="Course quick details">
                 <div className="course-meta-card">
@@ -146,7 +131,7 @@ export default function CourseDetail() {
                   Program Fee
                 </div>
                 <div className="course-sidebar-price">{price}</div>
-                
+
                 <Link to="/enroll-now" className="btn btn-primary course-sidebar-btn">
                   Enroll / Register Now <ArrowRight size={16} style={{ marginLeft: '8px' }} />
                 </Link>

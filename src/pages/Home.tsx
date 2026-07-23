@@ -194,11 +194,7 @@ export default function Home() {
           {/* Course card grid */}
           <div className="course-grid">
             {filteredCourses.map(course => {
-              // Extract pricing details dynamically if available
-              const feeMatch = course.content.match(/(?:fee|program fee is)\s+₹\s*(\d+\/?-?)/i) || 
-                               course.content.match(/INR\s*(\d+\s*-\s*\d+)/i) || 
-                               course.content.match(/(?:payment term|fee is)\s*(\d+\/?-?)/i);
-              const feeText = feeMatch ? `₹ ${feeMatch[1]}` : "Custom Pricing";
+              const feeText = (course as any).price || "Custom Pricing";
 
               // Find cover image dynamically based on slug using attached assets
               const coverImg = getCourseImage(course.slug);
