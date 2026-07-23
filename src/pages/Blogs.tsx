@@ -109,9 +109,16 @@ export default function Blogs() {
               {filteredBlogs.map(blog => {
                 const category = getBlogCategory(blog.slug, blog.title);
                 
-                // Get clean text excerpt
-                const paragraphs = blog.content.split('\n').filter(p => p.trim() && !p.startsWith('#'));
-                const excerpt = paragraphs[0] || "Read details about trading strategy and market psychology...";
+                // Extract actual publication date
+                const dateMatch = blog.content.match(/(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4})/);
+                const publishDate = dateMatch ? dateMatch[0] : "Educational";
+
+                // Get clean text excerpt (excluding subheadings like [Profit and Stocks] and # Heading)
+                const cleanParagraphs = blog.content
+                  .split('\n')
+                  .map(p => p.trim())
+                  .filter(p => p && !p.startsWith('#') && !p.startsWith('[Profit and Stocks]') && !p.includes('profitandstocks.com/author'));
+                const excerpt = cleanParagraphs[0] || "Read details about trading strategy and market psychology...";
 
                 // Select specific unique image for this blog post
                 const coverImg = getBlogImage(blog.slug);
@@ -132,7 +139,7 @@ export default function Blogs() {
                         <span style={{ color: 'var(--primary)', fontWeight: '600' }}>{category}</span>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <Calendar size={12} />
-                          <span>Educational</span>
+                          <span>{publishDate}</span>
                         </span>
                       </div>
                       <h3>{blog.title}</h3>

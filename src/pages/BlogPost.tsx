@@ -4,9 +4,12 @@ import MarkdownRenderer from '../components/MarkdownRenderer';
 import blogsData from '../data/blogs.json';
 import { getBlogImage } from '../utils/blogImages';
 
-// Helper to strip WordPress comments/sidebar junk from content
+// Helper to strip WordPress comments/sidebar junk and author headers from content
 const cleanBlogContent = (content: string) => {
   if (!content) return '';
+  // Remove author header lines like "[Profit and Stocks](https://profitandstocks.com/author/protrader/) November 22, 2019"
+  let cleaned = content.replace(/^\[Profit and Stocks\]\(https:\/\/profitandstocks\.com\/author\/protrader\/\)\s+[A-Z][a-z]+\s+\d{1,2},\s+\d{4}\s*/i, '');
+  
   const markers = [
     '### Leave a Reply',
     'Leave a Reply',
@@ -15,14 +18,14 @@ const cleanBlogContent = (content: string) => {
     '###  Recent Post',
     'Prev Post'
   ];
-  let cutIndex = content.length;
+  let cutIndex = cleaned.length;
   for (const marker of markers) {
-    const idx = content.indexOf(marker);
+    const idx = cleaned.indexOf(marker);
     if (idx !== -1 && idx < cutIndex) {
       cutIndex = idx;
     }
   }
-  return content.substring(0, cutIndex).trim();
+  return cleaned.substring(0, cutIndex).trim();
 };
 
 export default function BlogPost() {
@@ -45,11 +48,14 @@ export default function BlogPost() {
     );
   }
 
-  // Determine category based on content
+  // Determine category and publication date based on content
   const t = (post.slug + ' ' + post.title).toLowerCase();
   let category = 'Trading';
   if (t.includes('invest') || t.includes('long-term')) category = 'Investing';
   else if (t.includes('psychology') || t.includes('mistake') || t.includes('lose')) category = 'Psychology';
+
+  const dateMatch = post.content.match(/(?:[A-Z][a-z]+\s+\d{1,2},\s+\d{4})/);
+  const publishDate = dateMatch ? dateMatch[0] : "Educational Article";
 
   return (
     <main id="main-content">
@@ -80,7 +86,7 @@ export default function BlogPost() {
               <span>Category: <strong style={{ color: 'var(--primary)' }}>{category}</strong></span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <Calendar size={14} />
-                <span>Educational Article</span>
+                <span>{publishDate}</span>
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <User size={14} />
