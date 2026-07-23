@@ -118,22 +118,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About & Founder Profile */}
-      <section className="section-alt" id="founder-section" aria-label="About the Founder">
+      {/* About Section */}
+      <section className="section-alt" id="about-section" aria-label="About Profit and Stocks">
         <div className="container">
           <h2 className="section-title">About Profit and Stocks</h2>
           <div className="founder-profile">
             <div className="founder-img">
               <img 
                 src={`${import.meta.env.BASE_URL}wp-content/uploads/2025/03/cropped-image-businessman-sitting-by-table-cafe-analyzing-indicators-laptop-computer_171337-5598.jpg`} 
-                alt="SEBI/NISM Certified Research Analyst Mr. S. Kumar analyzing market charts"
+                alt="Profit and Stocks market analysis"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=600";
                 }}
               />
             </div>
             <div className="founder-info">
-              <h2>Mr. S. Kumar</h2>
+              <h2>Profit and Stocks</h2>
               <div className="founder-tag">(SEBI/NISM Certified Research Analyst)</div>
               <p>
                 <strong>Profit and Stocks</strong> is an exceptional team of market traders with over 12+ years of combined trading experience. Profitandstocks.com is a full-service trading training, education, and mentoring company managed by Mr. S. Kumar, a passionately curious and independent trader in the financial markets for the last decade.
