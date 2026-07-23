@@ -160,7 +160,10 @@ export default function Contact() {
           {/* Maps Section */}
           <div className="maps-grid" style={{ gridTemplateColumns: '1fr', maxWidth: '800px', margin: '60px auto 0 auto' }}>
             <div className="map-card">
-              <h4>Registered Office (Sector 82)</h4>
+              <h4>
+                <MapPin size={18} />
+                Registered Office Location (Sector 82, Gurgaon)
+              </h4>
               <iframe 
                 title="Registered Office location map"
                 src="https://maps.google.com/maps?q=%20Flat-706%2C%20Tower%20Beauty%2C%20profit%20and%20stocks%2C%20Sector%2082%2C%20Gurgaon&t=m&z=11&output=embed&iwloc=near"
