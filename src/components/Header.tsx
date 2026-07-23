@@ -101,37 +101,37 @@ export default function Header() {
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/pro-trader-course-from-confusion-to-clarity" onClick={closeMenu}>
-                      Pro Trader Course (Confusion to Clarity)
+                      Pro Trader Course-From Confusion to Clarity
                     </Link>
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/pro-trader-course-option-specific" onClick={closeMenu}>
-                      Pro Trader Course (Options Specific)
+                      Pro Trader Course- Option specific
                     </Link>
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/comprehensive-course" onClick={closeMenu}>
-                      Comprehensive Course
+                      Pro Trader Course-Comprehensive Course
                     </Link>
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/market-basic-course" onClick={closeMenu}>
-                      Basic Finance for Youngs and teens
+                      Basic Finance for Youngs
                     </Link>
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/advisory-services" onClick={closeMenu}>
-                      Advisory Services
+                      Advisory services
                     </Link>
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/mentorship" onClick={closeMenu}>
-                      Mentorship
+                      Mentorship-one to one
                     </Link>
                   </li>
                   <li className="dropdown-item">
                     <Link to="/courses/nism-certification-program" onClick={closeMenu}>
-                      NISM Certification Program
+                      NISM/SEBI certification course
                     </Link>
                   </li>
                 </ul>

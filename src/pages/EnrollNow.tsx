@@ -46,14 +46,14 @@ export default function EnrollNow() {
   };
 
   const COURSES = [
-    { slug: 'financial-market-basic-course', name: 'Financial Market Basic Course (₹ 5,000)' },
-    { slug: 'pro-trader-course-from-confusion-to-clarity', name: 'Pro Trader Course (Confusion to Clarity) (₹ 35,000)' },
-    { slug: 'pro-trader-course-option-specific', name: 'Pro Trader Course (Options Specific) (₹ 9,000)' },
-    { slug: 'comprehensive-course', name: 'Comprehensive Course (₹ 45,000)' },
-    { slug: 'trade-with-me', name: 'Complete Trader Transformation Program (₹ 28,000)' },
-    { slug: 'advisory-services', name: 'Advisory Services (₹ 2,000 / month)' },
-    { slug: 'mentorship', name: 'Mentorship Program (₹ 1,100 / hour)' },
-    { slug: 'nism-certification-program', name: 'NISM Certification Program (₹ 6,000 - 11,000)' }
+    { slug: 'financial-market-basic-course', name: 'Financial Market Basic Course' },
+    { slug: 'pro-trader-course-from-confusion-to-clarity', name: 'Pro Trader Course-From Confusion to Clarity' },
+    { slug: 'pro-trader-course-option-specific', name: 'Pro Trader Course- Option specific' },
+    { slug: 'comprehensive-course', name: 'Pro Trader Course-Comprehensive Course' },
+    { slug: 'mentorship', name: 'Mentorship-one to one' },
+    { slug: 'nism-certification-program', name: 'NISM/SEBI certification course' },
+    { slug: 'advisory-services', name: 'Advisory services' },
+    { slug: 'market-basic-course', name: 'Basic Finance for Youngs' }
   ];
 
   return (
