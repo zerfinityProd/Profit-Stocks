@@ -41,10 +41,13 @@ export default function CourseDetail() {
                      course.content.match(/INR\s*([0-9,\s*-]+)/i);
   const price = priceMatch ? `₹ ${priceMatch[1]}` : "Contact for Fee";
 
-  // Clean up content to remove metadata section from showing twice
-  let cleanContent = course.content;
-  // Let's strip the redundant headers if we render them in custom elements
-  cleanContent = cleanContent.replace(/## Key Details of[\s\S]*?(?=For Whom|$)/i, '');
+  // Clean up content to remove inline fee sentences, Register Now links, and metadata section from showing twice
+  let cleanContent = course.content
+    .replace(/(?:The program fee is|Per month fee is)\s+₹\s*[\d,/ -]+(?:\s*per\s+(?:hour|month|course))?/gi, '')
+    .replace(/\[Register Now\]\([^)]+\)/gi, '')
+    .replace(/What we Offer/gi, '')
+    .replace(/## Key Details of[\s\S]*?(?=For Whom|$)/i, '')
+    .trim();
 
   // Split "For Whom", "Benefits", "Why" if possible, or render them under accordions
   const extractSection = (headerName: string) => {
