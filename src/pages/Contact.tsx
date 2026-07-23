@@ -62,27 +62,6 @@ export default function Contact() {
                 </p>
               </div>
 
-              {/* Training Centre 1 */}
-              <div className="contact-address-card">
-                <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <MapPin size={18} color="var(--primary)" />
-                  Training Centre 1
-                </h3>
-                <p style={{ marginTop: '8px', fontSize: '15px' }}>
-                  2006, SVH Metro Street, Sector 83, Gurgaon. Haryana 122004
-                </p>
-              </div>
-
-              {/* Training Centre 2 */}
-              <div className="contact-address-card">
-                <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <MapPin size={18} color="var(--primary)" />
-                  Training Centre 2
-                </h3>
-                <p style={{ marginTop: '8px', fontSize: '15px' }}>
-                  CF 051 BAANI City Center, Sector 63, Gurgaon. Haryana 122102
-                </p>
-              </div>
 
               {/* Contact numbers */}
               <div style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -179,32 +158,12 @@ export default function Contact() {
           </div>
 
           {/* Maps Section */}
-          <div className="maps-grid">
+          <div className="maps-grid" style={{ gridTemplateColumns: '1fr', maxWidth: '800px', margin: '60px auto 0 auto' }}>
             <div className="map-card">
               <h4>Registered Office (Sector 82)</h4>
               <iframe 
                 title="Registered Office location map"
                 src="https://maps.google.com/maps?q=%20Flat-706%2C%20Tower%20Beauty%2C%20profit%20and%20stocks%2C%20Sector%2082%2C%20Gurgaon&t=m&z=11&output=embed&iwloc=near"
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
-            </div>
-            
-            <div className="map-card">
-              <h4>Training Centre 1 (Sector 83)</h4>
-              <iframe 
-                title="Training Centre 1 location map"
-                src="https://maps.google.com/maps?q=2006%2C%20SVH%20Metro%20Street%2C%20Sector%2083%2C%20Gurgaon.%20Haryana%20122004&t=m&z=11&output=embed&iwloc=near"
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
-            </div>
-
-            <div className="map-card">
-              <h4>Training Centre 2 (Sector 63)</h4>
-              <iframe 
-                title="Training Centre 2 location map"
-                src="https://maps.google.com/maps?q=BAANI%20CITY%20CENTER%20CF%20051%20%20SECTOR%2063%20Gurgaon&t=m&z=11&output=embed&iwloc=near"
                 allowFullScreen
                 loading="lazy"
               ></iframe>

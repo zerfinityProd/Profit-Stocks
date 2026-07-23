@@ -55,7 +55,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <MapPin size={24} style={{ flexShrink: 0 }} />
-                  <span>2006, SVH Metro Street, Sector 83, Gurgaon. Haryana 122004</span>
+                  <span>Flat-706, Tower Beauty, The Seven Lamps, Sector 82, Gurgaon</span>
                 </li>
               </ul>
             </div>
