@@ -1,5 +1,6 @@
 import { useParams, Link, NavLink } from 'react-router-dom';
 import MarkdownRenderer from '../components/MarkdownRenderer';
+import TechnicalAnalysisOverview from '../components/TechnicalAnalysisOverview';
 import taData from '../data/technical_analysis.json';
 
 const TOPICS = [
@@ -96,9 +97,11 @@ export default function TechnicalAnalysis() {
               ))}
             </aside>
 
-            {/* Markdown Reader Pane */}
+            {/* Content Pane */}
             <div style={{ minHeight: '500px' }}>
-              {topic ? (
+              {currentSlug === 'technical-analysis' ? (
+                <TechnicalAnalysisOverview />
+              ) : topic ? (
                 <div className="fade-in" key={currentSlug}>
                   <MarkdownRenderer content={topic.content} />
                 </div>

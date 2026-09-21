@@ -25,7 +25,7 @@ export default function About() {
         <div className="container">
           <div style={{ maxWidth: '920px', margin: '0 auto' }}>
             
-            {/* Custom High Resolution 2D Line Art Illustration */}
+            {/* Realistic Professional Trading & Market Analysis Banner */}
             <div style={{ 
               marginBottom: '40px', 
               borderRadius: 'var(--radius-lg)', 
@@ -34,11 +34,11 @@ export default function About() {
               border: '1px solid var(--border)',
               width: '100%',
               height: 'auto',
-              background: '#fff'
+              background: '#0b1329'
             }}>
               <img 
-                src={`${import.meta.env.BASE_URL}images/about-hero-line-art.png`} 
-                alt="Stock Market Trading & Investment Growth 2D Line Art Illustration" 
+                src={`${import.meta.env.BASE_URL}images/about-hero-realistic.jpg`} 
+                alt="Professional Stock Market Trading & Technical Analysis Desk" 
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
