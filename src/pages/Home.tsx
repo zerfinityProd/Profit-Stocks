@@ -126,11 +126,9 @@ export default function Home() {
           <div className="founder-profile">
             <div className="founder-img">
               <img 
-                src={`${import.meta.env.BASE_URL}wp-content/uploads/2025/03/cropped-image-businessman-sitting-by-table-cafe-analyzing-indicators-laptop-computer_171337-5598.jpg`} 
-                alt="Profit and Stocks market analysis"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=600";
-                }}
+                src={`${import.meta.env.BASE_URL}images/home-about-session.jpg`} 
+                alt="Mr. S. Kumar conducting live market technical analysis and advisory session at Profit and Stocks"
+                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
               />
             </div>
             <div className="founder-info">

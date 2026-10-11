@@ -11,7 +11,9 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   let processedContent = content
     .replace(/https:\/\/profitandstocks\.com\/wp-content/g, 'WP_CONTENT_PLACEHOLDER')
     .replace(/\/wp-content/g, 'WP_CONTENT_PLACEHOLDER')
-    .replace(/WP_CONTENT_PLACEHOLDER/g, `${import.meta.env.BASE_URL}wp-content`);
+    .replace(/WP_CONTENT_PLACEHOLDER/g, `${import.meta.env.BASE_URL}wp-content`)
+    .replace(/<div[^>]*>|<\/div>|<span[^>]*>|<\/span>/gi, '')
+    .replace(/elementor-\d+["\s>]*/gi, '');
 
   // Parse and group blocks line by line to separate headings, lists, images, and paragraphs properly
   const lines = processedContent.split('\n');
@@ -187,11 +189,21 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         if (imgMatch) {
           const [, alt, url] = imgMatch;
           return (
-            <div key={index} className="rich-text-img-container fade-in" style={{ margin: '24px 0' }}>
+            <div key={index} className="rich-text-img-container fade-in" style={{ margin: '28px 0', textAlign: 'center' }}>
               <img 
                 src={url} 
                 alt={alt || "Illustration"} 
-                style={{ borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', width: '100%' }} 
+                loading="lazy"
+                style={{ 
+                  maxWidth: '100%', 
+                  height: 'auto', 
+                  borderRadius: 'var(--radius-md)', 
+                  boxShadow: 'var(--shadow-sm)',
+                  border: '1px solid var(--border)',
+                  background: '#ffffff',
+                  padding: '8px',
+                  display: 'inline-block'
+                }} 
               />
             </div>
           );
